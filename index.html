@@ -74,7 +74,7 @@ img {
 </div>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>The Data extracted from the 4 sensors (glove, armband, lumbar belt, dumbbell) was stored in a CSV format with the respective classification of the movement (from A to E, where A is the correct movement). The sensor data for each sensor is comprised of Euler Angles (roll, pitch and yaw) with eight features for each angle. Also, there is data from Accelerometer, Gyroscope and Magnetometer. It contains 19622 observations of 160 variables, which will be used later as a training dataset for the machine learning algorithm. Due to the high dimensional data, only the overview of the transformed data set will be presented in the following sections. The dataset used in this project is available at github <a href="http://github.com" class="uri">http://github.com</a></p>
+<p>The Data extracted from the 4 sensors (glove, armband, lumbar belt, dumbbell) was stored in a CSV format with the respective classification of the movement (from A to E, where A is the correct movement). The sensor data for each sensor is comprised of Euler Angles (roll, pitch and yaw) with eight features for each angle. Also, there is data from Accelerometer, Gyroscope and Magnetometer. It contains 19622 observations of 160 variables, which will be used later as a training dataset for the machine learning algorithm. Due to the high dimensional data, only the overview of the transformed data set will be presented in the following sections. The dataset used in this project is available at <a href="https://github.com/bodias/datasciencecoursera/tree/master/practical_machine_learning/project_course">github</a></p>
 </div>
 <div id="exploratory-analysis-and-data-cleansing" class="section level2">
 <h2>Exploratory Analysis and Data Cleansing</h2>
@@ -149,7 +149,7 @@ trainStdPCA$classe &lt;- subTrain$classe</code></pre>
 </div>
 <div id="training-and-cross-validation" class="section level3">
 <h3>Training and Cross Validation</h3>
-<p>The selected method, Random Forests, was applied to the training set using the standardized dataset with the 20 PCA variables. The train control was also set to use Cross Validation with 5 folds.</p>
+<p>The selected method, Random Forests, was applied to the training set using the standardized dataset with the PCA variables. The train control was also set to use Cross Validation with 5 folds.</p>
 <pre class="r"><code>timestart &lt;- Sys.time()
 modelStdPCA &lt;- train(classe ~ ., data=trainStdPCA,method=&quot;rf&quot;,trControl=trainControl(method=&quot;cv&quot;,number=5),prox=F)</code></pre>
 <pre><code>## Loading required package: randomForest</code></pre>
@@ -179,7 +179,7 @@ print(modelStdPCA$finalModel)</code></pre>
 ## C    9   38 2663   25    3 0.027392257
 ## D   10    2  101 2453    7 0.046638166
 ## E    1   11   15   16 2843 0.014899515</code></pre>
-<p>The training using Random Forests with Cross Validation took 7.69 to run.</p>
+<p>The training using Random Forests with Cross Validation took 10.5 minutes to run.</p>
 </div>
 <div id="predicting-on-training-set" class="section level3">
 <h3>Predicting on training set</h3>
