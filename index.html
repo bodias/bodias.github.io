@@ -179,7 +179,7 @@ print(modelStdPCA$finalModel)</code></pre>
 ## C    9   38 2663   25    3 0.027392257
 ## D   10    2  101 2453    7 0.046638166
 ## E    1   11   15   16 2843 0.014899515</code></pre>
-<p>The training using Random Forests with Cross Validation took 10.5 minutes to run.</p>
+<p>The training using Random Forests with Cross Validation took 6.01 minutes to run.</p>
 </div>
 <div id="predicting-on-training-set" class="section level3">
 <h3>Predicting on training set</h3>
@@ -220,10 +220,13 @@ confusionMatrix(subTest$classe,InSamplePred)</code></pre>
 ## Detection Prevalence   0.2845   0.1935   0.1744   0.1639   0.1838
 ## Balanced Accuracy      0.9916   0.9816   0.9709   0.9891   0.9958</code></pre>
 <p>The confusion matrix has shown satisfatory results, with an Accuracy of 0.9778 and the 95% Confidence Interval of [0.9727, 0.9822].</p>
+<p>The In-Sample Error Rate is 0.02 or 2%</p>
 </div>
 <div id="predicting-the-results-on-the-test-set" class="section level3">
 <h3>Predicting the results on the Test Set</h3>
-<p>Then the trained model was applied to the test data set to predict the “classe” of each observation. To do so, I have to Standardize and run PCA used the models built from the training data. The predictions are shown below:</p>
+<p>Then the trained model was applied to the test data set to predict the “classe” of each observation. To do so, I have to Standardize and run PCA used the models built from the training data.</p>
+<p>Because the actual “classe” is not provided for the Test Set, it is only possible to estimate that the Out of Sample error rate will be greater than the In-Sample Error rate, which is 2%</p>
+<p>The predictions are shown below:</p>
 <pre class="r"><code>newtesting &lt;- testing[,names(newtraining)[-53]] # get only the clean variables
 testStd &lt;- predict(preObj,newtesting) #standardize the test set using the model built from the training set
 testStdPCA &lt;- predict(preProc,testStd) #run PCA in the test set using the modem built from the training set

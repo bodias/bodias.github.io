@@ -98,9 +98,15 @@ confusionMatrix(subTest$classe,InSamplePred)
 
 The confusion matrix has shown satisfatory results, with an Accuracy of 0.9778 and the 95% Confidence Interval of [0.9727, 0.9822].
 
+The In-Sample Error Rate is 0.02 or 2%
+
 ### Predicting the results on the Test Set
 
-Then the trained model was applied to the test data set to predict the "classe" of each observation. To do so, I have to Standardize and run PCA used the models built from the training data. The predictions are shown below:
+Then the trained model was applied to the test data set to predict the "classe" of each observation. To do so, I have to Standardize and run PCA used the models built from the training data. 
+
+Because the actual "classe" is not provided for the Test Set, it is only possible to estimate that the Out of Sample error rate will be greater than the In-Sample Error rate, which is 2%
+
+The predictions are shown below:
 
 ```{r testresults}
 newtesting <- testing[,names(newtraining)[-53]] # get only the clean variables
